@@ -1,9 +1,0 @@
-tables
-
-have names
-have fields -> array list
-fields have names and data type
-
-each data type has different rules
-
-therefore this is a good time to use polymorphism, make an interface or abstract class of field then make each type of field
