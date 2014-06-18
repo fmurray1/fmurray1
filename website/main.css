@@ -1,0 +1,76 @@
+body
+{
+	background-image:url('grey_wash_wall.png');
+	background-repeat;
+}
+#content
+{
+	padding:50px 75px 50px 75px;
+	min-width:600px;
+	max-width: 1000px;
+	background-color:#F8F8FF;
+	display:block;
+	float:none;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:left;	
+	color:#3B3B3B;
+}
+#header
+{   
+   	padding-left: 75px;
+    padding-right: 75px;
+    padding-bottom:15px;
+    height:75px;
+    min-width: 600px;
+    max-width: 1000px;
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+    float: none;
+    text-align: center;
+    background-color: #00688B;
+    color:#F8F8FF;
+}
+
+#header li
+{
+	margin-left:auto;
+	margin-right:auto;
+	padding-left: 40px;
+	padding-right: 40px;
+    display: inline;
+    list-style: none;
+    float: none;
+  	border-style:solid;
+	border-width:3px;
+	border-color:#F0F8FF;
+	background-color:#F8F8FF;
+}
+#header a
+{
+	color:#00688B;
+	cursor: alias;
+}
+#header a:hover
+{
+ color:#00CDCD;
+}
+
+#imageContainer {
+    background-image: url('home_image.png'); 
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size:cover;
+	min-width:750px;
+	max-width:1150px;
+	min-height:550px;
+	max-height:1150px;
+	margin-left:auto;
+	margin-right:auto;
+	
+	}
+#imageContainer a
+{
+	cursor: alias;
+	}
