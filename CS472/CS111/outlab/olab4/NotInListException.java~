@@ -1,0 +1,6 @@
+//Not in list exception class
+
+public class NotInListException extends Exception
+{
+    
+}

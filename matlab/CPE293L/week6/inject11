@@ -1,0 +1,18 @@
+loud@ubuntu:~$ ssh frank@172.20.1.51
+The authenticity of host '172.20.1.51 (172.20.1.51)' can't be established.
+ECDSA key fingerprint is 24:33:1b:d6:91:e7:de:cb:aa:79:7c:b5:a6:42:30:20.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.20.1.51' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-38-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+frank@ubuntu:~$

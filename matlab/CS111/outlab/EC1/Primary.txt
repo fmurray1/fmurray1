@@ -1,0 +1,110 @@
+--- Begin PrimaryFlashCards.java ---
+1:	/* This is the modified problem generator for k-2 */
+2:	
+3:	import java.util.Scanner;
+4:	
+5:	public class PrimaryFlashCards
+6:	{
+7:	    public PrimaryFlashCards()
+8:	    {
+9:		Problem p; 
+10:		boolean allowed, answered;
+11:		Scanner sc = new Scanner(System.in);
+12:		int ans, gm, wm, count;
+13:		
+14:		while(sc.hasNext())
+15:		    {
+16:			p = new Problem();
+17:			allowed = false;
+18:			answered = false;
+19:			count = 0;
+20:			System.out.println("This is a Flash card Generator for Grades k-2\nYou have 3 tries to complete each problem \nType 1 then Return to continue \nType Ctrl + D to end");
+21:			
+22:			while(!allowed)
+23:			    {
+24:				if(p.left() > 0 && p.left() < 100 && p.right() > 0 && p.right() < 100)
+25:				    {
+26:					if(p.operator() == '/' && (p.left() % p.right()) == 0)
+27:					    {
+28:						p.displayProblem();
+29:						allowed = true;
+30:					    }
+31:					else if((p.left() - p.right())>0)
+32:					    {
+33:						p.displayProblem();
+34:						allowed = true;
+35:					    }
+36:					else if((p.left() + p.right())>=0)
+37:					    {
+38:						p.displayProblem();
+39:						allowed = true;
+40:					    }
+41:					else
+42:					    {
+43:						p= new Problem();
+44:						allowed = false;
+45:					    }
+46:				    }
+47:				
+48:			    }
+49:			while(!answered)
+50:			    {
+51:				ans = sc.nextInt();
+52:				count++;
+53:				if(p.correctAnswer()==ans)
+54:				    {
+55:					gm = (((int)Math.random()*3+1));
+56:					switch(gm)
+57:					    {
+58:					    case 1:
+59:						System.out.println("WAY TO GO!!!!");
+60:						sc.nextLine();
+61:						answered = true;
+62:						break;
+63:					    case 2:
+64:						System.out.println("Awesome Job!!!");
+65:						sc.nextLine();
+66:						answered = true;
+67:						break;
+68:					    case 3:
+69:						System.out.println("You're da Bomb!");
+70:						sc.nextLine();
+71:						answered = true;
+72:						break;
+73:					    }
+74:				    }
+75:				else if(count<3)
+76:				    {
+77:					wm = (((int)Math.random()*3+1));
+78:					switch(wm)
+79:					    {
+80:					    case 1:
+81:						System.out.println("Close, try again...");
+82:						sc.nextLine();
+83:						break;
+84:					    case 2:
+85:						System.out.println("You almost had it give it one more shot...");
+86:						sc.nextLine();
+87:						break;
+88:					    case 3:
+89:						System.out.println("You can do this, try it once more...");
+90:						sc.nextLine();
+91:						break;
+92:					    }
+93:				    }
+94:				else if(count >=3)
+95:				    {
+96:					count = 0;
+97:					System.out.println("I'm sorry you're out of tries :( the correct answer is: "+ p.correctAnswer());
+98:					sc.nextLine();
+99:				    }
+100:				
+101:			    }
+102:		    }
+103:	    }
+
+Compilation Successful.
+
+--- End PrimaryFlashCards.java ---
+
+

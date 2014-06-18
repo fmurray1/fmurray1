@@ -1,0 +1,621 @@
+Script started on Wed 20 Feb 2013 12:45:56 PM EST
+]0;loud@ubuntu: ~loud@ubuntu:~$ man chattr
+[?1049h[?1h=CHATTR(1)                                                                    CHATTR(1)[m
+[m
+[1mNAME[0m[m
+       chattr - change file attributes on a Linux file system[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mchattr[0m [ [1m-RVf[0m ] [ [1m-v[0m [4mversion[24m ] [ [4mmode[24m ] [4mfiles...[24m[m
+[m
+[1mDESCRIPTION[0m[m
+       [1mchattr[0m changes the file attributes on a Linux file system.[m
+[m
+       The format of a symbolic mode is +-=[acdeijstuADST].[m
+[m
+       The  operator  `+'  causes  the selected attributes to be added to the existing[m
+       attributes of the files; `-' causes them to be removed; and `=' causes them  to[m
+       be the only attributes that the files have.[m
+[m
+       The  letters  `acdeijstuADST'  select  the new attributes for the files: append[m
+       only (a), compressed (c), no dump (d), extent format (e), immutable  (i),  data[m
+       journalling  (j), secure deletion (s), no tail-merging (t), undeletable (u), no[m
+       atime updates (A), synchronous directory updates (D), synchronous updates  (S),[m
+       and top of directory hierarchy (T).[m
+[m
+       The  following attributes are read-only, and may be listed by [1mlsattr[0m(1) but not[m
+       modified by chattr: huge file (h), compression  error  (E),  indexed  directory[m
+       (I), compression raw access (X), and compressed dirty file (Z).[m
+[m
+[1mOPTIONS[0m[m
+       [1m-R[0m     Recursively change attributes of directories and their contents.[m
+[m
+       [1m-V[0m     Be verbose with chattr's output and print the program version.[m
+[m
+       [1m-f[0m     Suppress most error messages.[m
+[m
+       [1m-v[0m [4mversion[24m[m
+              Set the file's version/generation number.[m
+[m
+[1mATTRIBUTES[0m[m
+       When  a  file  with  the 'A' attribute set is accessed, its atime record is not[m
+       modified.  This avoids a certain amount of disk I/O for laptop systems.[m
+[m
+       A file with the `a' attribute set can only be open in append mode for  writing.[m
+       Only  the  superuser or a process possessing the CAP_LINUX_IMMUTABLE capability[m
+       can set or clear this attribute.[m
+[m
+       A file with the `c' attribute set is automatically compressed on  the  disk  by[m
+       the  kernel.  A read from this file returns uncompressed data.  A write to this[m
+       file compresses data before storing them on the disk.  Note: please  make  sure[m
+       to read the bugs and limitations section at the end of this document.[m
+[m
+       When  a directory with the `D' attribute set is modified, the changes are writ‐[m
+       ten synchronously on the disk; this is equivalent to the `dirsync' mount option[m
+       applied to a subset of the files.[m
+[m
+[7m Manual page chattr(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A  file with the `d' attribute set is not candidate for backup when the [1mdump[0m(8)[m
+[7m Manual page chattr(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       program is run.[m
+[7m Manual page chattr(1) line 5 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 6 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'E' attribute is used by the experimental compression patches  to  indicate[m
+[7m Manual page chattr(1) line 7 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       that  a  compressed  file  has a compression error.  It may not be set or reset[m
+[7m Manual page chattr(1) line 8 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       using [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 9 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 10 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'e' attribute indicates that the file is  using  extents  for  mapping  the[m
+[7m Manual page chattr(1) line 11 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       blocks on disk.  It may not be removed using [1mchattr[0m(1).[m
+[7m Manual page chattr(1) line 12 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 13 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The  'I'  attribute  is  used by the htree code to indicate that a directory is[m
+[7m Manual page chattr(1) line 14 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       being indexed using hashed trees.  It may not be set or reset using  [1mchattr[0m(1),[m
+[7m Manual page chattr(1) line 15 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       although it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 16 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 17 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The  'h'  attribute  indicates  the  file is storing its blocks in units of the[m
+[7m Manual page chattr(1) line 18 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       filesystem blocksize instead of in units of sectors, and means that the file is[m
+[7m Manual page chattr(1) line 19 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       (or  at  one  time  was)  larger  than  2TB.   It may not be set or reset using[m
+[7m Manual page chattr(1) line 20 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 21 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 22 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A file with the `i' attribute cannot be  modified:  it  cannot  be  deleted  or[m
+[7m Manual page chattr(1) line 23 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       renamed,  no link can be created to this file and no data can be written to the[m
+[7m Manual page chattr(1) line 24 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       file.  Only the superuser or a process possessing the CAP_LINUX_IMMUTABLE capa‐[m
+[7m Manual page chattr(1) line 25 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       bility can set or clear this attribute.[m
+[7m Manual page chattr(1) line 26 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 27 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A  file  with the `j' attribute has all of its data written to the ext3 journal[m
+[7m Manual page chattr(1) line 28 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       before being written to the file itself, if the filesystem is mounted with  the[m
+[7m Manual page chattr(1) line 29 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       "data=ordered"  or  "data=writeback"  options.   When the filesystem is mounted[m
+[7m Manual page chattr(1) line 30 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       with the "data=journal" option all file data is  already  journalled  and  this[m
+[7m Manual page chattr(1) line 31 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       attribute  has  no  effect.   Only  the  superuser  or a process possessing the[m
+[7m Manual page chattr(1) line 32 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       CAP_SYS_RESOURCE capability can set or clear this attribute.[m
+[7m Manual page chattr(1) line 33 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 34 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       When a file with the `s' attribute set is deleted, its blocks  are  zeroed  and[m
+[7m Manual page chattr(1) line 35 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       written  back to the disk.  Note: please make sure to read the bugs and limita‐[m
+[7m Manual page chattr(1) line 36 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       tions section at the end of this document.[m
+[7m Manual page chattr(1) line 37 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 38 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       When a file with the `S' attribute set is modified,  the  changes  are  written[m
+[7m Manual page chattr(1) line 39 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       synchronously  on  the  disk;  this  is  equivalent  to the `sync' mount option[m
+[7m Manual page chattr(1) line 40 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       applied to a subset of the files.[m
+[7m Manual page chattr(1) line 41 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 42 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A directory with the 'T' attribute will be deemed to be the  top  of  directory[m
+[7m Manual page chattr(1) line 43 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       hierarchies  for  the purposes of the Orlov block allocator.  This is a hint to[m
+[7m Manual page chattr(1) line 44 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       the block allocator used by ext3 and ext4 that the  subdirectories  under  this[m
+[7m Manual page chattr(1) line 45 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       directory  are not related, and thus should be spread apart for allocation pur‐[m
+[7m Manual page chattr(1) line 46 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       poses.   For example it is a very good idea to set the  'T'  attribute  on  the[m
+[7m Manual page chattr(1) line 47 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       /home  directory,  so  that  /home/john and /home/mary are placed into separate[m
+[7m Manual page chattr(1) line 48 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       block groups.  For directories where this attribute is not set, the Orlov block[m
+[7m Manual page chattr(1) line 49 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       allocator will try to group subdirectories closer together where possible.[m
+[7m Manual page chattr(1) line 50 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 51 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A file with the 't' attribute will not have a partial block fragment at the end[m
+[7m Manual page chattr(1) line 52 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       of the file merged with other files (for those filesystems which support  tail-[m
+[7m Manual page chattr(1) line 53 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       merging).   This  is  necessary  for  applications  such as LILO which read the[m
+[7m Manual page chattr(1) line 54 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       filesystem directly, and which don't understand tail-merged files.  Note: As of[m
+[7m Manual page chattr(1) line 55 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       this  writing, the ext2 or ext3 filesystems do not (yet, except in very experi‐[m
+[7m Manual page chattr(1) line 56 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       mental patches) support tail-merging.[m
+[7m Manual page chattr(1) line 57 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 58 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       When a file with the `u' attribute set is  deleted,  its  contents  are  saved.[m
+[7m Manual page chattr(1) line 59 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       This allows the user to ask for its undeletion.  Note: please make sure to read[m
+[7m Manual page chattr(1) line 60 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       the bugs and limitations section at the end of this document.[m
+[7m Manual page chattr(1) line 61 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 62 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'X' attribute is used by the experimental compression patches  to  indicate[m
+[7m Manual page chattr(1) line 63 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       that  a  raw  contents  of a compressed file can be accessed directly.  It cur‐[m
+[7m Manual page chattr(1) line 64 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       rently may not be set or reset using [1mchattr[0m(1), although it can be displayed by[m
+[7m Manual page chattr(1) line 65 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 66 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 67 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'Z' attribute is used by the experimental compression patches to indicate a[m
+[7m Manual page chattr(1) line 68 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       compressed file is dirty.  It may not be set or reset using [1mchattr[0m(1), although[m
+[7m Manual page chattr(1) line 69 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 70 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 71 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mAUTHOR[0m[m
+[7m Manual page chattr(1) line 72 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mchattr[0m  was  written by Remy Card <Remy.Card@linux.org>.  It is currently being[m
+[7m Manual page chattr(1) line 73 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       maintained by Theodore Ts'o <tytso@alum.mit.edu>.[m
+[7m Manual page chattr(1) line 74 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 75 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mBUGS[0m [1mAND[0m [1mLIMITATIONS[0m[m
+[7m Manual page chattr(1) line 76 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The `c', 's',  and `u' attributes are not honored by the ext2 and ext3 filesys‐[m
+[7m Manual page chattr(1) line 77 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       tems  as implemented in the current mainline Linux kernels.    These attributes[m
+[7m Manual page chattr(1) line 78 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       may be implemented in future versions of the ext2 and ext3 filesystems.[m
+[7m Manual page chattr(1) line 79 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 80 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The `j' option is only useful if the filesystem is mounted as ext3.[m
+[7m Manual page chattr(1) line 81 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 82 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The `D' option is only useful on Linux kernel 2.5.19 and later.[m
+[7m Manual page chattr(1) line 83 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 84 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mAVAILABILITY[0m[m
+[7m Manual page chattr(1) line 85 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mchattr[0m  is  part   of   the   e2fsprogs   package   and   is   available   from[m
+[7m Manual page chattr(1) line 86 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       http://e2fsprogs.sourceforge.net.[m
+[7m Manual page chattr(1) line 87 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 88 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mSEE[0m [1mALSO[0m[m
+[7m Manual page chattr(1) line 89 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mlsattr[0m(1)[m
+[7m Manual page chattr(1) line 90 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 91 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[KE2fsprogs version 1.42               November 2011                           CHATTR(1)[m
+[7m Manual page chattr(1) line 92 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 91/147 99% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       tions section at the end of this document.[m
+[55;1H[K[7m Manual page chattr(1) line 90/147 99% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       written  back to the disk.  Note: please make sure to read the bugs and limita‐[m
+[55;1H[K[7m Manual page chattr(1) line 89/147 99% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       When a file with the `s' attribute set is deleted, its blocks  are  zeroed  and[m
+[55;1H[K[7m Manual page chattr(1) line 88/147 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 87/147 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       CAP_SYS_RESOURCE capability can set or clear this attribute.[m
+[55;1H[K[7m Manual page chattr(1) line 86/147 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       attribute  has  no  effect.   Only  the  superuser  or a process possessing the[m
+[55;1H[K[7m Manual page chattr(1) line 85/147 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       with the "data=journal" option all file data is  already  journalled  and  this[m
+[55;1H[K[7m Manual page chattr(1) line 84/147 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       "data=ordered"  or  "data=writeback"  options.   When the filesystem is mounted[m
+[55;1H[K[7m Manual page chattr(1) line 83/147 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       before being written to the file itself, if the filesystem is mounted with  the[m
+[55;1H[K[7m Manual page chattr(1) line 82/147 95% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A  file  with the `j' attribute has all of its data written to the ext3 journal[m
+[55;1H[K[7m Manual page chattr(1) line 81/147 95% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 80/147 94% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       bility can set or clear this attribute.[m
+[55;1H[K[7m Manual page chattr(1) line 79/147 94% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       file.  Only the superuser or a process possessing the CAP_LINUX_IMMUTABLE capa‐[m
+[55;1H[K[7m Manual page chattr(1) line 78/147 93% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       renamed,  no link can be created to this file and no data can be written to the[m
+[55;1H[K[7m Manual page chattr(1) line 77/147 92% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A file with the `i' attribute cannot be  modified:  it  cannot  be  deleted  or[m
+[55;1H[K[7m Manual page chattr(1) line 76/147 91% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 75/147 90% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[55;1H[K[7m Manual page chattr(1) line 74/147 90% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       (or  at  one  time  was)  larger  than  2TB.   It may not be set or reset using[m
+[55;1H[K[7m Manual page chattr(1) line 73/147 89% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       filesystem blocksize instead of in units of sectors, and means that the file is[m
+[55;1H[K[7m Manual page chattr(1) line 72/147 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  'h'  attribute  indicates  the  file is storing its blocks in units of the[m
+[55;1H[K[7m Manual page chattr(1) line 71/147 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 70/147 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       although it can be displayed by [1mlsattr[0m(1).[m
+[55;1H[K[7m Manual page chattr(1) line 69/147 87% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       being indexed using hashed trees.  It may not be set or reset using  [1mchattr[0m(1),[m
+[55;1H[K[7m Manual page chattr(1) line 68/147 86% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  'I'  attribute  is  used by the htree code to indicate that a directory is[m
+[55;1H[K[7m Manual page chattr(1) line 67/147 85% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 66/147 85% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       blocks on disk.  It may not be removed using [1mchattr[0m(1).[m
+[55;1H[K[7m Manual page chattr(1) line 65/147 85% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The 'e' attribute indicates that the file is  using  extents  for  mapping  the[m
+[55;1H[K[7m Manual page chattr(1) line 64/147 83% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 63/147 82% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       using [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[55;1H[K[7m Manual page chattr(1) line 62/147 81% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       that  a  compressed  file  has a compression error.  It may not be set or reset[m
+[55;1H[K[7m Manual page chattr(1) line 61/147 81% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The 'E' attribute is used by the experimental compression patches  to  indicate[m
+[55;1H[K[7m Manual page chattr(1) line 60/147 80% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 59/147 79% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       program is run.[m
+[55;1H[K[7m Manual page chattr(1) line 58/147 78% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A  file with the `d' attribute set is not candidate for backup when the [1mdump[0m(8)[m
+[55;1H[K[7m Manual page chattr(1) line 57/147 78% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 56/147 78% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       applied to a subset of the files.[m
+[55;1H[K[7m Manual page chattr(1) line 55/147 76% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       ten synchronously on the disk; this is equivalent to the `dirsync' mount option[m
+[55;1H[K[7m Manual page chattr(1) line 54/147 75% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       When  a directory with the `D' attribute set is modified, the changes are writ‐[m
+[55;1H[K[7m Manual page chattr(1) line 53/147 74% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 52/147 73% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       to read the bugs and limitations section at the end of this document.[m
+[55;1H[K[7m Manual page chattr(1) line 51/147 72% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       file compresses data before storing them on the disk.  Note: please  make  sure[m
+[55;1H[K[7m Manual page chattr(1) line 50/147 72% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       the  kernel.  A read from this file returns uncompressed data.  A write to this[m
+[55;1H[K[7m Manual page chattr(1) line 49/147 71% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A file with the `c' attribute set is automatically compressed on  the  disk  by[m
+[55;1H[K[7m Manual page chattr(1) line 48/147 70% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 47/147 69% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       can set or clear this attribute.[m
+[55;1H[K[7m Manual page chattr(1) line 46/147 68% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       Only  the  superuser or a process possessing the CAP_LINUX_IMMUTABLE capability[m
+[55;1H[K[7m Manual page chattr(1) line 45/147 67% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A file with the `a' attribute set can only be open in append mode for  writing.[m
+[55;1H[K[7m Manual page chattr(1) line 44/147 66% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 43/147 64% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       modified.  This avoids a certain amount of disk I/O for laptop systems.[m
+[55;1H[K[7m Manual page chattr(1) line 42/147 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       When  a  file  with  the 'A' attribute set is accessed, its atime record is not[m
+[55;1H[K[7m Manual page chattr(1) line 41/147 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mATTRIBUTES[0m[m
+[55;1H[K[7m Manual page chattr(1) line 40/147 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 39/147 62% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              Set the file's version/generation number.[m
+[55;1H[K[7m Manual page chattr(1) line 38/147 61% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-v[0m [4mversion[24m[m
+[55;1H[K[7m Manual page chattr(1) line 37/147 61% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 36/147 60% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-f[0m     Suppress most error messages.[m
+[55;1H[K[7m Manual page chattr(1) line 35/147 59% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 34/147 58% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-V[0m     Be verbose with chattr's output and print the program version.[m
+[55;1H[K[7m Manual page chattr(1) line 33/147 58% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 32/147 57% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-R[0m     Recursively change attributes of directories and their contents.[m
+[55;1H[K[7m Manual page chattr(1) line 31/147 56% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mOPTIONS[0m[m
+[55;1H[K[7m Manual page chattr(1) line 30/147 55% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 29/147 54% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       (I), compression raw access (X), and compressed dirty file (Z).[m
+[55;1H[K[7m Manual page chattr(1) line 28/147 53% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       modified by chattr: huge file (h), compression  error  (E),  indexed  directory[m
+[55;1H[K[7m Manual page chattr(1) line 27/147 52% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  following attributes are read-only, and may be listed by [1mlsattr[0m(1) but not[m
+[55;1H[K[7m Manual page chattr(1) line 26/147 52% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 25/147 51% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       and top of directory hierarchy (T).[m
+[55;1H[K[7m Manual page chattr(1) line 24/147 50% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       atime updates (A), synchronous directory updates (D), synchronous updates  (S),[m
+[55;1H[K[7m Manual page chattr(1) line 23/147 49% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       journalling  (j), secure deletion (s), no tail-merging (t), undeletable (u), no[m
+[55;1H[K[7m Manual page chattr(1) line 22/147 48% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       only (a), compressed (c), no dump (d), extent format (e), immutable  (i),  data[m
+[55;1H[K[7m Manual page chattr(1) line 21/147 48% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  letters  `acdeijstuADST'  select  the new attributes for the files: append[m
+[55;1H[K[7m Manual page chattr(1) line 20/147 47% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 19/147 45% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       be the only attributes that the files have.[m
+[55;1H[K[7m Manual page chattr(1) line 18/147 44% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       attributes of the files; `-' causes them to be removed; and `=' causes them  to[m
+[55;1H[K[7m Manual page chattr(1) line 17/147 43% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  operator  `+'  causes  the selected attributes to be added to the existing[m
+[55;1H[K[7m Manual page chattr(1) line 16/147 43% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 15/147 42% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The format of a symbolic mode is +-=[acdeijstuADST].[m
+[55;1H[K[7m Manual page chattr(1) line 14/147 41% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 13/147 40% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1mchattr[0m changes the file attributes on a Linux file system.[m
+[55;1H[K[7m Manual page chattr(1) line 12/147 40% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mDESCRIPTION[0m[m
+[55;1H[K[7m Manual page chattr(1) line 11/147 39% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 10/147 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1mchattr[0m [ [1m-RVf[0m ] [ [1m-v[0m [4mversion[24m ] [ [4mmode[24m ] [4mfiles...[24m[m
+[55;1H[K[7m Manual page chattr(1) line 9/147 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mSYNOPSIS[0m[m
+[55;1H[K[7m Manual page chattr(1) line 8/147 37% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 7/147 36% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       chattr - change file attributes on a Linux file system[m
+[55;1H[K[7m Manual page chattr(1) line 6/147 35% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mNAME[0m[m
+[55;1H[K[7m Manual page chattr(1) line 5/147 35% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 4/147 34% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HMCHATTR(1)                                                                    CHATTR(1)[m
+[55;1H[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A  file with the `d' attribute set is not candidate for backup when the [1mdump[0m(8)[m
+[7m Manual page chattr(1) line 4/147 34% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       program is run.[m
+[7m Manual page chattr(1) line 5/147 35% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 6/147 35% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'E' attribute is used by the experimental compression patches  to  indicate[m
+[7m Manual page chattr(1) line 7/147 36% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       that  a  compressed  file  has a compression error.  It may not be set or reset[m
+[7m Manual page chattr(1) line 8/147 37% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       using [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 9/147 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 10/147 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'e' attribute indicates that the file is  using  extents  for  mapping  the[m
+[7m Manual page chattr(1) line 11/147 39% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       blocks on disk.  It may not be removed using [1mchattr[0m(1).[m
+[7m Manual page chattr(1) line 12/147 40% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 13/147 40% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The  'I'  attribute  is  used by the htree code to indicate that a directory is[m
+[7m Manual page chattr(1) line 14/147 41% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       being indexed using hashed trees.  It may not be set or reset using  [1mchattr[0m(1),[m
+[7m Manual page chattr(1) line 15/147 42% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       although it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 16/147 43% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 17/147 43% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The  'h'  attribute  indicates  the  file is storing its blocks in units of the[m
+[7m Manual page chattr(1) line 18/147 44% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       filesystem blocksize instead of in units of sectors, and means that the file is[m
+[7m Manual page chattr(1) line 19/147 45% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       (or  at  one  time  was)  larger  than  2TB.   It may not be set or reset using[m
+[7m Manual page chattr(1) line 20/147 47% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 21/147 48% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 22/147 48% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A file with the `i' attribute cannot be  modified:  it  cannot  be  deleted  or[m
+[7m Manual page chattr(1) line 23/147 49% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       renamed,  no link can be created to this file and no data can be written to the[m
+[7m Manual page chattr(1) line 24/147 50% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       file.  Only the superuser or a process possessing the CAP_LINUX_IMMUTABLE capa‐[m
+[7m Manual page chattr(1) line 25/147 51% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       bility can set or clear this attribute.[m
+[7m Manual page chattr(1) line 26/147 52% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 27/147 52% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A  file  with the `j' attribute has all of its data written to the ext3 journal[m
+[7m Manual page chattr(1) line 28/147 53% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       before being written to the file itself, if the filesystem is mounted with  the[m
+[7m Manual page chattr(1) line 29/147 54% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       "data=ordered"  or  "data=writeback"  options.   When the filesystem is mounted[m
+[7m Manual page chattr(1) line 30/147 55% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       with the "data=journal" option all file data is  already  journalled  and  this[m
+[7m Manual page chattr(1) line 31/147 56% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       attribute  has  no  effect.   Only  the  superuser  or a process possessing the[m
+[7m Manual page chattr(1) line 32/147 57% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       CAP_SYS_RESOURCE capability can set or clear this attribute.[m
+[7m Manual page chattr(1) line 33/147 58% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 34/147 58% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       When a file with the `s' attribute set is deleted, its blocks  are  zeroed  and[m
+[7m Manual page chattr(1) line 35/147 59% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       written  back to the disk.  Note: please make sure to read the bugs and limita‐[m
+[7m Manual page chattr(1) line 36/147 60% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       tions section at the end of this document.[m
+[7m Manual page chattr(1) line 37/147 61% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 38/147 61% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       When a file with the `S' attribute set is modified,  the  changes  are  written[m
+[7m Manual page chattr(1) line 39/147 62% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       synchronously  on  the  disk;  this  is  equivalent  to the `sync' mount option[m
+[7m Manual page chattr(1) line 40/147 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       applied to a subset of the files.[m
+[7m Manual page chattr(1) line 41/147 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 42/147 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A directory with the 'T' attribute will be deemed to be the  top  of  directory[m
+[7m Manual page chattr(1) line 43/147 64% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       hierarchies  for  the purposes of the Orlov block allocator.  This is a hint to[m
+[7m Manual page chattr(1) line 44/147 66% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       the block allocator used by ext3 and ext4 that the  subdirectories  under  this[m
+[7m Manual page chattr(1) line 45/147 67% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       directory  are not related, and thus should be spread apart for allocation pur‐[m
+[7m Manual page chattr(1) line 46/147 68% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       poses.   For example it is a very good idea to set the  'T'  attribute  on  the[m
+[7m Manual page chattr(1) line 47/147 69% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       /home  directory,  so  that  /home/john and /home/mary are placed into separate[m
+[7m Manual page chattr(1) line 48/147 70% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       block groups.  For directories where this attribute is not set, the Orlov block[m
+[7m Manual page chattr(1) line 49/147 71% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       allocator will try to group subdirectories closer together where possible.[m
+[7m Manual page chattr(1) line 50/147 72% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 51/147 72% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A file with the 't' attribute will not have a partial block fragment at the end[m
+[7m Manual page chattr(1) line 52/147 73% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       of the file merged with other files (for those filesystems which support  tail-[m
+[7m Manual page chattr(1) line 53/147 74% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       merging).   This  is  necessary  for  applications  such as LILO which read the[m
+[7m Manual page chattr(1) line 54/147 75% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       filesystem directly, and which don't understand tail-merged files.  Note: As of[m
+[7m Manual page chattr(1) line 55/147 76% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       this  writing, the ext2 or ext3 filesystems do not (yet, except in very experi‐[m
+[7m Manual page chattr(1) line 56/147 78% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       mental patches) support tail-merging.[m
+[7m Manual page chattr(1) line 57/147 78% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 58/147 78% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       When a file with the `u' attribute set is  deleted,  its  contents  are  saved.[m
+[7m Manual page chattr(1) line 59/147 79% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       This allows the user to ask for its undeletion.  Note: please make sure to read[m
+[7m Manual page chattr(1) line 60/147 80% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       the bugs and limitations section at the end of this document.[m
+[7m Manual page chattr(1) line 61/147 81% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 62/147 81% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'X' attribute is used by the experimental compression patches  to  indicate[m
+[7m Manual page chattr(1) line 63/147 82% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       that  a  raw  contents  of a compressed file can be accessed directly.  It cur‐[m
+[7m Manual page chattr(1) line 64/147 83% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       rently may not be set or reset using [1mchattr[0m(1), although it can be displayed by[m
+[7m Manual page chattr(1) line 65/147 85% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 66/147 85% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 67/147 85% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'Z' attribute is used by the experimental compression patches to indicate a[m
+[7m Manual page chattr(1) line 68/147 86% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       compressed file is dirty.  It may not be set or reset using [1mchattr[0m(1), although[m
+[7m Manual page chattr(1) line 69/147 87% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 70/147 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 71/147 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mAUTHOR[0m[m
+[7m Manual page chattr(1) line 72/147 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mchattr[0m  was  written by Remy Card <Remy.Card@linux.org>.  It is currently being[m
+[7m Manual page chattr(1) line 73/147 89% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       maintained by Theodore Ts'o <tytso@alum.mit.edu>.[m
+[7m Manual page chattr(1) line 74/147 90% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 75/147 90% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mBUGS[0m [1mAND[0m [1mLIMITATIONS[0m[m
+[7m Manual page chattr(1) line 76/147 91% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The `c', 's',  and `u' attributes are not honored by the ext2 and ext3 filesys‐[m
+[7m Manual page chattr(1) line 77/147 92% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       tems  as implemented in the current mainline Linux kernels.    These attributes[m
+[7m Manual page chattr(1) line 78/147 93% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       may be implemented in future versions of the ext2 and ext3 filesystems.[m
+[7m Manual page chattr(1) line 79/147 94% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 80/147 94% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The `j' option is only useful if the filesystem is mounted as ext3.[m
+[7m Manual page chattr(1) line 81/147 95% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 82/147 95% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The `D' option is only useful on Linux kernel 2.5.19 and later.[m
+[7m Manual page chattr(1) line 83/147 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 84/147 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mAVAILABILITY[0m[m
+[7m Manual page chattr(1) line 85/147 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mchattr[0m  is  part   of   the   e2fsprogs   package   and   is   available   from[m
+[7m Manual page chattr(1) line 86/147 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       http://e2fsprogs.sourceforge.net.[m
+[7m Manual page chattr(1) line 87/147 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 88/147 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mSEE[0m [1mALSO[0m[m
+[7m Manual page chattr(1) line 89/147 99% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mlsattr[0m(1)[m
+[7m Manual page chattr(1) line 90/147 99% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 91/147 99% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[KE2fsprogs version 1.42               November 2011                           CHATTR(1)[m
+[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page chattr(1) line 92/147 (END) (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 91/147 99% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       tions section at the end of this document.[m
+[55;1H[K[7m Manual page chattr(1) line 90/147 99% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       written  back to the disk.  Note: please make sure to read the bugs and limita‐[m
+[55;1H[K[7m Manual page chattr(1) line 89/147 99% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       When a file with the `s' attribute set is deleted, its blocks  are  zeroed  and[m
+[55;1H[K[7m Manual page chattr(1) line 88/147 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 87/147 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       CAP_SYS_RESOURCE capability can set or clear this attribute.[m
+[55;1H[K[7m Manual page chattr(1) line 86/147 98% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       attribute  has  no  effect.   Only  the  superuser  or a process possessing the[m
+[55;1H[K[7m Manual page chattr(1) line 85/147 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       with the "data=journal" option all file data is  already  journalled  and  this[m
+[55;1H[K[7m Manual page chattr(1) line 84/147 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       "data=ordered"  or  "data=writeback"  options.   When the filesystem is mounted[m
+[55;1H[K[7m Manual page chattr(1) line 83/147 96% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       before being written to the file itself, if the filesystem is mounted with  the[m
+[55;1H[K[7m Manual page chattr(1) line 82/147 95% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A  file  with the `j' attribute has all of its data written to the ext3 journal[m
+[55;1H[K[7m Manual page chattr(1) line 81/147 95% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 80/147 94% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       bility can set or clear this attribute.[m
+[55;1H[K[7m Manual page chattr(1) line 79/147 94% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       file.  Only the superuser or a process possessing the CAP_LINUX_IMMUTABLE capa‐[m
+[55;1H[K[7m Manual page chattr(1) line 78/147 93% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       renamed,  no link can be created to this file and no data can be written to the[m
+[55;1H[K[7m Manual page chattr(1) line 77/147 92% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A file with the `i' attribute cannot be  modified:  it  cannot  be  deleted  or[m
+[55;1H[K[7m Manual page chattr(1) line 76/147 91% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 75/147 90% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[55;1H[K[7m Manual page chattr(1) line 74/147 90% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       (or  at  one  time  was)  larger  than  2TB.   It may not be set or reset using[m
+[55;1H[K[7m Manual page chattr(1) line 73/147 89% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       filesystem blocksize instead of in units of sectors, and means that the file is[m
+[55;1H[K[7m Manual page chattr(1) line 72/147 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  'h'  attribute  indicates  the  file is storing its blocks in units of the[m
+[55;1H[K[7m Manual page chattr(1) line 71/147 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 70/147 88% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       although it can be displayed by [1mlsattr[0m(1).[m
+[55;1H[K[7m Manual page chattr(1) line 69/147 87% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       being indexed using hashed trees.  It may not be set or reset using  [1mchattr[0m(1),[m
+[55;1H[K[7m Manual page chattr(1) line 68/147 86% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  'I'  attribute  is  used by the htree code to indicate that a directory is[m
+[55;1H[K[7m Manual page chattr(1) line 67/147 85% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 66/147 85% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       blocks on disk.  It may not be removed using [1mchattr[0m(1).[m
+[55;1H[K[7m Manual page chattr(1) line 65/147 85% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The 'e' attribute indicates that the file is  using  extents  for  mapping  the[m
+[55;1H[K[7m Manual page chattr(1) line 64/147 83% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 63/147 82% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       using [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[55;1H[K[7m Manual page chattr(1) line 62/147 81% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       that  a  compressed  file  has a compression error.  It may not be set or reset[m
+[55;1H[K[7m Manual page chattr(1) line 61/147 81% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The 'E' attribute is used by the experimental compression patches  to  indicate[m
+[55;1H[K[7m Manual page chattr(1) line 60/147 80% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 59/147 79% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       program is run.[m
+[55;1H[K[7m Manual page chattr(1) line 58/147 78% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A  file with the `d' attribute set is not candidate for backup when the [1mdump[0m(8)[m
+[55;1H[K[7m Manual page chattr(1) line 57/147 78% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 56/147 78% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       applied to a subset of the files.[m
+[55;1H[K[7m Manual page chattr(1) line 55/147 76% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       ten synchronously on the disk; this is equivalent to the `dirsync' mount option[m
+[55;1H[K[7m Manual page chattr(1) line 54/147 75% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       When  a directory with the `D' attribute set is modified, the changes are writ‐[m
+[55;1H[K[7m Manual page chattr(1) line 53/147 74% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 52/147 73% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       to read the bugs and limitations section at the end of this document.[m
+[55;1H[K[7m Manual page chattr(1) line 51/147 72% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       file compresses data before storing them on the disk.  Note: please  make  sure[m
+[55;1H[K[7m Manual page chattr(1) line 50/147 72% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       the  kernel.  A read from this file returns uncompressed data.  A write to this[m
+[55;1H[K[7m Manual page chattr(1) line 49/147 71% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A file with the `c' attribute set is automatically compressed on  the  disk  by[m
+[55;1H[K[7m Manual page chattr(1) line 48/147 70% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 47/147 69% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       can set or clear this attribute.[m
+[55;1H[K[7m Manual page chattr(1) line 46/147 68% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       Only  the  superuser or a process possessing the CAP_LINUX_IMMUTABLE capability[m
+[55;1H[K[7m Manual page chattr(1) line 45/147 67% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       A file with the `a' attribute set can only be open in append mode for  writing.[m
+[55;1H[K[7m Manual page chattr(1) line 44/147 66% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 43/147 64% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       modified.  This avoids a certain amount of disk I/O for laptop systems.[m
+[55;1H[K[7m Manual page chattr(1) line 42/147 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       When  a  file  with  the 'A' attribute set is accessed, its atime record is not[m
+[55;1H[K[7m Manual page chattr(1) line 41/147 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mATTRIBUTES[0m[m
+[55;1H[K[7m Manual page chattr(1) line 40/147 63% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 39/147 62% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM              Set the file's version/generation number.[m
+[55;1H[K[7m Manual page chattr(1) line 38/147 61% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-v[0m [4mversion[24m[m
+[55;1H[K[7m Manual page chattr(1) line 37/147 61% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 36/147 60% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-f[0m     Suppress most error messages.[m
+[55;1H[K[7m Manual page chattr(1) line 35/147 59% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 34/147 58% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-V[0m     Be verbose with chattr's output and print the program version.[m
+[55;1H[K[7m Manual page chattr(1) line 33/147 58% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 32/147 57% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-R[0m     Recursively change attributes of directories and their contents.[m
+[55;1H[K[7m Manual page chattr(1) line 31/147 56% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mOPTIONS[0m[m
+[55;1H[K[7m Manual page chattr(1) line 30/147 55% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 29/147 54% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       (I), compression raw access (X), and compressed dirty file (Z).[m
+[55;1H[K[7m Manual page chattr(1) line 28/147 53% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       modified by chattr: huge file (h), compression  error  (E),  indexed  directory[m
+[55;1H[K[7m Manual page chattr(1) line 27/147 52% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  following attributes are read-only, and may be listed by [1mlsattr[0m(1) but not[m
+[55;1H[K[7m Manual page chattr(1) line 26/147 52% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 25/147 51% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       and top of directory hierarchy (T).[m
+[55;1H[K[7m Manual page chattr(1) line 24/147 50% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       atime updates (A), synchronous directory updates (D), synchronous updates  (S),[m
+[55;1H[K[7m Manual page chattr(1) line 23/147 49% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       journalling  (j), secure deletion (s), no tail-merging (t), undeletable (u), no[m
+[55;1H[K[7m Manual page chattr(1) line 22/147 48% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       only (a), compressed (c), no dump (d), extent format (e), immutable  (i),  data[m
+[55;1H[K[7m Manual page chattr(1) line 21/147 48% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  letters  `acdeijstuADST'  select  the new attributes for the files: append[m
+[55;1H[K[7m Manual page chattr(1) line 20/147 47% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 19/147 45% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       be the only attributes that the files have.[m
+[55;1H[K[7m Manual page chattr(1) line 18/147 44% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       attributes of the files; `-' causes them to be removed; and `=' causes them  to[m
+[55;1H[K[7m Manual page chattr(1) line 17/147 43% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The  operator  `+'  causes  the selected attributes to be added to the existing[m
+[55;1H[K[7m Manual page chattr(1) line 16/147 43% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 15/147 42% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       The format of a symbolic mode is +-=[acdeijstuADST].[m
+[55;1H[K[7m Manual page chattr(1) line 14/147 41% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 13/147 40% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1mchattr[0m changes the file attributes on a Linux file system.[m
+[55;1H[K[7m Manual page chattr(1) line 12/147 40% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mDESCRIPTION[0m[m
+[55;1H[K[7m Manual page chattr(1) line 11/147 39% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 10/147 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       [1mchattr[0m [ [1m-RVf[0m ] [ [1m-v[0m [4mversion[24m ] [ [4mmode[24m ] [4mfiles...[24m[m
+[55;1H[K[7m Manual page chattr(1) line 9/147 38% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mSYNOPSIS[0m[m
+[55;1H[K[7m Manual page chattr(1) line 8/147 37% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 7/147 36% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       chattr - change file attributes on a Linux file system[m
+[55;1H[K[7m Manual page chattr(1) line 6/147 35% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mNAME[0m[m
+[55;1H[K[7m Manual page chattr(1) line 5/147 35% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[55;1H[K[7m Manual page chattr(1) line 4/147 34% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HMCHATTR(1)                                                                    CHATTR(1)[m
+[55;1H[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page chattr(1) line 1/147 33% (press h for help or q to quit)[27m[K[K[?1l>[?1049l]0;loud@ubuntu: ~loud@ubuntu:~$ emacs blah.txt
+]0;loud@ubuntu: ~loud@ubuntu:~$ chattr +i blah.txt 
+chattr: Operation not permitted while setting flags on blah.txt
+]0;loud@ubuntu: ~loud@ubuntu:~$ chattr +i blah.txt [1@s[1@u[1@d[1@o[1@ 
+[sudo] password for loud: 
+]0;loud@ubuntu: ~loud@ubuntu:~$ ls -lisa
+total 212
+5636098  4 drwxr-xr-x 21 loud loud  4096 Feb 20 12:47 [0m[01;34m.[0m
+5636097  4 drwxr-xr-x  3 root root  4096 Feb 20 11:55 [01;34m..[0m
+5636100  4 -rw-r--r--  1 loud loud   220 Feb 20 11:55 .bash_logout
+5636101  4 -rw-r--r--  1 loud loud  3486 Feb 20 11:55 .bashrc
+5636488  4 -rw-rw-r--  1 loud loud     6 Feb 20 12:47 blah.txt
+5636116  4 drwx------ 13 loud loud  4096 Feb 20 12:45 [01;34m.cache[0m
+5636113  4 drwx------ 10 loud loud  4096 Feb 20 12:44 [01;34m.config[0m
+5636119  4 drwx------  3 loud loud  4096 Feb 20 12:43 [01;34m.dbus[0m
+5636105  4 drwxr-xr-x  2 loud loud  4096 Feb 20 12:43 [01;34mDesktop[0m
+5636102  4 -rw-r--r--  1 loud loud    26 Feb 20 12:43 .dmrc
+5636109  4 drwxr-xr-x  2 loud loud  4096 Feb 20 12:43 [01;34mDocuments[0m
+5636106  4 drwxr-xr-x  2 loud loud  4096 Feb 20 12:43 [01;34mDownloads[0m
+5636486  4 drwx------  2 loud loud  4096 Feb 20 12:47 [01;34m.emacs.d[0m
+5636125  4 drwx------  3 loud loud  4096 Feb 20 12:43 [01;34m.gconf[0m
+5636126  4 drwx------  4 loud loud  4096 Feb 20 12:43 [01;34m.gnome2[0m
+5636192  4 -rw-rw-r--  1 loud loud   132 Feb 20 12:43 .gtk-bookmarks
+      1  0 dr-x------  2 loud loud     0 Feb 20 12:43 [01;34m.gvfs[0m
+5636123  4 -rw-------  1 loud loud   318 Feb 20 12:43 .ICEauthority
+5636132  4 drwxr-xr-x  3 loud loud  4096 Feb 20 12:43 [01;34m.local[0m
+5636271  4 drwx------  3 loud loud  4096 Feb 20 12:43 [01;34m.mission-control[0m
+5636220  4 drwx------  4 loud loud  4096 Feb 20 12:43 [01;34m.mozilla[0m
+5636110  4 drwxr-xr-x  2 loud loud  4096 Feb 20 12:43 [01;34mMusic[0m
+5636111  4 drwxr-xr-x  2 loud loud  4096 Feb 20 12:43 [01;34mPictures[0m
+5636099  4 -rw-r--r--  1 loud loud   675 Feb 20 11:55 .profile
+5636108  4 drwxr-xr-x  2 loud loud  4096 Feb 20 12:43 [01;34mPublic[0m
+5636136  4 drwx------  2 loud loud  4096 Feb 20 12:43 [01;34m.pulse[0m
+5636128  4 -rw-------  1 loud loud   256 Feb 20 12:43 .pulse-cookie
+5636107  4 drwxr-xr-x  2 loud loud  4096 Feb 20 12:43 [01;34mTemplates[0m
+5636464 92 -rw-rw-r--  1 loud loud 94208 Feb 20 12:47 typescript
+5636112  4 drwxr-xr-x  2 loud loud  4096 Feb 20 12:43 [01;34mVideos[0m
+5636103  4 -rw-------  1 loud loud    51 Feb 20 12:43 .Xauthority
+5636104  4 -rw-------  1 loud loud  2208 Feb 20 12:44 .xsession-errors
+]0;loud@ubuntu: ~loud@ubuntu:~$ man charr[K[Kttr
+[?1049h[?1h=CHATTR(1)                                                                    CHATTR(1)[m
+[m
+[1mNAME[0m[m
+       chattr - change file attributes on a Linux file system[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mchattr[0m [ [1m-RVf[0m ] [ [1m-v[0m [4mversion[24m ] [ [4mmode[24m ] [4mfiles...[24m[m
+[m
+[1mDESCRIPTION[0m[m
+       [1mchattr[0m changes the file attributes on a Linux file system.[m
+[m
+       The format of a symbolic mode is +-=[acdeijstuADST].[m
+[m
+       The  operator  `+'  causes  the selected attributes to be added to the existing[m
+       attributes of the files; `-' causes them to be removed; and `=' causes them  to[m
+       be the only attributes that the files have.[m
+[m
+       The  letters  `acdeijstuADST'  select  the new attributes for the files: append[m
+       only (a), compressed (c), no dump (d), extent format (e), immutable  (i),  data[m
+       journalling  (j), secure deletion (s), no tail-merging (t), undeletable (u), no[m
+       atime updates (A), synchronous directory updates (D), synchronous updates  (S),[m
+       and top of directory hierarchy (T).[m
+[m
+       The  following attributes are read-only, and may be listed by [1mlsattr[0m(1) but not[m
+       modified by chattr: huge file (h), compression  error  (E),  indexed  directory[m
+       (I), compression raw access (X), and compressed dirty file (Z).[m
+[m
+[1mOPTIONS[0m[m
+       [1m-R[0m     Recursively change attributes of directories and their contents.[m
+[m
+       [1m-V[0m     Be verbose with chattr's output and print the program version.[m
+[m
+       [1m-f[0m     Suppress most error messages.[m
+[m
+       [1m-v[0m [4mversion[24m[m
+              Set the file's version/generation number.[m
+[m
+[1mATTRIBUTES[0m[m
+       When  a  file  with  the 'A' attribute set is accessed, its atime record is not[m
+       modified.  This avoids a certain amount of disk I/O for laptop systems.[m
+[m
+       A file with the `a' attribute set can only be open in append mode for  writing.[m
+       Only  the  superuser or a process possessing the CAP_LINUX_IMMUTABLE capability[m
+       can set or clear this attribute.[m
+[m
+       A file with the `c' attribute set is automatically compressed on  the  disk  by[m
+       the  kernel.  A read from this file returns uncompressed data.  A write to this[m
+       file compresses data before storing them on the disk.  Note: please  make  sure[m
+       to read the bugs and limitations section at the end of this document.[m
+[m
+       When  a directory with the `D' attribute set is modified, the changes are writ‐[m
+       ten synchronously on the disk; this is equivalent to the `dirsync' mount option[m
+       applied to a subset of the files.[m
+[m
+[7m Manual page chattr(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A  file with the `d' attribute set is not candidate for backup when the [1mdump[0m(8)[m
+[7m Manual page chattr(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       program is run.[m
+[7m Manual page chattr(1) line 5 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 6 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'E' attribute is used by the experimental compression patches  to  indicate[m
+[7m Manual page chattr(1) line 7 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       that  a  compressed  file  has a compression error.  It may not be set or reset[m
+[7m Manual page chattr(1) line 8 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       using [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 9 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 10 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'e' attribute indicates that the file is  using  extents  for  mapping  the[m
+[7m Manual page chattr(1) line 11 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       blocks on disk.  It may not be removed using [1mchattr[0m(1).[m
+[7m Manual page chattr(1) line 12 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 13 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The  'I'  attribute  is  used by the htree code to indicate that a directory is[m
+[7m Manual page chattr(1) line 14 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       being indexed using hashed trees.  It may not be set or reset using  [1mchattr[0m(1),[m
+[7m Manual page chattr(1) line 15 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       although it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 16 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 17 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The  'h'  attribute  indicates  the  file is storing its blocks in units of the[m
+[7m Manual page chattr(1) line 18 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       filesystem blocksize instead of in units of sectors, and means that the file is[m
+[7m Manual page chattr(1) line 19 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       (or  at  one  time  was)  larger  than  2TB.   It may not be set or reset using[m
+[7m Manual page chattr(1) line 20 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mchattr[0m(1), although it can be displayed by [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 21 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 22 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A file with the `i' attribute cannot be  modified:  it  cannot  be  deleted  or[m
+[7m Manual page chattr(1) line 23 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       renamed,  no link can be created to this file and no data can be written to the[m
+[7m Manual page chattr(1) line 24 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       file.  Only the superuser or a process possessing the CAP_LINUX_IMMUTABLE capa‐[m
+[7m Manual page chattr(1) line 25 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       bility can set or clear this attribute.[m
+[7m Manual page chattr(1) line 26 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 27 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A  file  with the `j' attribute has all of its data written to the ext3 journal[m
+[7m Manual page chattr(1) line 28 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       before being written to the file itself, if the filesystem is mounted with  the[m
+[7m Manual page chattr(1) line 29 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       "data=ordered"  or  "data=writeback"  options.   When the filesystem is mounted[m
+[7m Manual page chattr(1) line 30 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       with the "data=journal" option all file data is  already  journalled  and  this[m
+[7m Manual page chattr(1) line 31 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       attribute  has  no  effect.   Only  the  superuser  or a process possessing the[m
+[7m Manual page chattr(1) line 32 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       CAP_SYS_RESOURCE capability can set or clear this attribute.[m
+[7m Manual page chattr(1) line 33 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 34 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       When a file with the `s' attribute set is deleted, its blocks  are  zeroed  and[m
+[7m Manual page chattr(1) line 35 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       written  back to the disk.  Note: please make sure to read the bugs and limita‐[m
+[7m Manual page chattr(1) line 36 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       tions section at the end of this document.[m
+[7m Manual page chattr(1) line 37 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 38 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       When a file with the `S' attribute set is modified,  the  changes  are  written[m
+[7m Manual page chattr(1) line 39 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       synchronously  on  the  disk;  this  is  equivalent  to the `sync' mount option[m
+[7m Manual page chattr(1) line 40 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       applied to a subset of the files.[m
+[7m Manual page chattr(1) line 41 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 42 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A directory with the 'T' attribute will be deemed to be the  top  of  directory[m
+[7m Manual page chattr(1) line 43 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       hierarchies  for  the purposes of the Orlov block allocator.  This is a hint to[m
+[7m Manual page chattr(1) line 44 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       the block allocator used by ext3 and ext4 that the  subdirectories  under  this[m
+[7m Manual page chattr(1) line 45 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       directory  are not related, and thus should be spread apart for allocation pur‐[m
+[7m Manual page chattr(1) line 46 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       poses.   For example it is a very good idea to set the  'T'  attribute  on  the[m
+[7m Manual page chattr(1) line 47 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       /home  directory,  so  that  /home/john and /home/mary are placed into separate[m
+[7m Manual page chattr(1) line 48 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       block groups.  For directories where this attribute is not set, the Orlov block[m
+[7m Manual page chattr(1) line 49 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       allocator will try to group subdirectories closer together where possible.[m
+[7m Manual page chattr(1) line 50 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 51 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A file with the 't' attribute will not have a partial block fragment at the end[m
+[7m Manual page chattr(1) line 52 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       of the file merged with other files (for those filesystems which support  tail-[m
+[7m Manual page chattr(1) line 53 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       merging).   This  is  necessary  for  applications  such as LILO which read the[m
+[7m Manual page chattr(1) line 54 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       filesystem directly, and which don't understand tail-merged files.  Note: As of[m
+[7m Manual page chattr(1) line 55 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       this  writing, the ext2 or ext3 filesystems do not (yet, except in very experi‐[m
+[7m Manual page chattr(1) line 56 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       mental patches) support tail-merging.[m
+[7m Manual page chattr(1) line 57 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 58 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       When a file with the `u' attribute set is  deleted,  its  contents  are  saved.[m
+[7m Manual page chattr(1) line 59 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       This allows the user to ask for its undeletion.  Note: please make sure to read[m
+[7m Manual page chattr(1) line 60 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       the bugs and limitations section at the end of this document.[m
+[7m Manual page chattr(1) line 61 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 62 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'X' attribute is used by the experimental compression patches  to  indicate[m
+[7m Manual page chattr(1) line 63 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       that  a  raw  contents  of a compressed file can be accessed directly.  It cur‐[m
+[7m Manual page chattr(1) line 64 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       rently may not be set or reset using [1mchattr[0m(1), although it can be displayed by[m
+[7m Manual page chattr(1) line 65 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1mlsattr[0m(1).[m
+[7m Manual page chattr(1) line 66 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page chattr(1) line 67 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       The 'Z' attribute is used by the experimental compression patches to indicate a[m
+[7m Manual page chattr(1) line 68 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       compressed file is dirty.  It may not be set or reset using [1mchattr[0m(1), although[m
+[7m Manual page chattr(1) line 69 (press h for help or q to quit)[27m[K[K[?1l>[?1049l]0;loud@ubuntu: ~loud@ubuntu:~$ lsattr blah.txt 
+----i--------e- blah.txt
+]0;loud@ubuntu: ~loud@ubuntu:~$ rm blah.txt 
+rm: remove write-protected regular file `blah.txt'? yes
+rm: cannot remove `blah.txt': Operation not permitted
+]0;loud@ubuntu: ~loud@ubuntu:~$ chatt[Ktr -i v[Kblah.txt 
+chattr: Operation not permitted while setting flags on blah.txt
+]0;loud@ubuntu: ~loud@ubuntu:~$ chattr -i blah.txt [1@s[1@u[1@d[1@o[1@ 
+]0;loud@ubuntu: ~loud@ubuntu:~$ lsattr blah.txt 
+-------------e- blah.txt
+]0;loud@ubuntu: ~loud@ubuntu:~$ rm blah.txt 
+]0;loud@ubuntu: ~loud@ubuntu:~$ ls -lisa
+total 224
+5636098   4 drwxr-xr-x 21 loud loud   4096 Feb 20 12:51 [0m[01;34m.[0m
+5636097   4 drwxr-xr-x  3 root root   4096 Feb 20 11:55 [01;34m..[0m
+5636100   4 -rw-r--r--  1 loud loud    220 Feb 20 11:55 .bash_logout
+5636101   4 -rw-r--r--  1 loud loud   3486 Feb 20 11:55 .bashrc
+5636116   4 drwx------ 13 loud loud   4096 Feb 20 12:45 [01;34m.cache[0m
+5636113   4 drwx------ 10 loud loud   4096 Feb 20 12:44 [01;34m.config[0m
+5636119   4 drwx------  3 loud loud   4096 Feb 20 12:43 [01;34m.dbus[0m
+5636105   4 drwxr-xr-x  2 loud loud   4096 Feb 20 12:43 [01;34mDesktop[0m
+5636102   4 -rw-r--r--  1 loud loud     26 Feb 20 12:43 .dmrc
+5636109   4 drwxr-xr-x  2 loud loud   4096 Feb 20 12:43 [01;34mDocuments[0m
+5636106   4 drwxr-xr-x  2 loud loud   4096 Feb 20 12:43 [01;34mDownloads[0m
+5636486   4 drwx------  2 loud loud   4096 Feb 20 12:47 [01;34m.emacs.d[0m
+5636125   4 drwx------  3 loud loud   4096 Feb 20 12:43 [01;34m.gconf[0m
+5636126   4 drwx------  4 loud loud   4096 Feb 20 12:43 [01;34m.gnome2[0m
+5636192   4 -rw-rw-r--  1 loud loud    132 Feb 20 12:43 .gtk-bookmarks
+      1   0 dr-x------  2 loud loud      0 Feb 20 12:43 [01;34m.gvfs[0m
+5636123   4 -rw-------  1 loud loud    318 Feb 20 12:43 .ICEauthority
+5636132   4 drwxr-xr-x  3 loud loud   4096 Feb 20 12:43 [01;34m.local[0m
+5636271   4 drwx------  3 loud loud   4096 Feb 20 12:43 [01;34m.mission-control[0m
+5636220   4 drwx------  4 loud loud   4096 Feb 20 12:43 [01;34m.mozilla[0m
+5636110   4 drwxr-xr-x  2 loud loud   4096 Feb 20 12:43 [01;34mMusic[0m
+5636111   4 drwxr-xr-x  2 loud loud   4096 Feb 20 12:43 [01;34mPictures[0m
+5636099   4 -rw-r--r--  1 loud loud    675 Feb 20 11:55 .profile
+5636108   4 drwxr-xr-x  2 loud loud   4096 Feb 20 12:43 [01;34mPublic[0m
+5636136   4 drwx------  2 loud loud   4096 Feb 20 12:43 [01;34m.pulse[0m
+5636128   4 -rw-------  1 loud loud    256 Feb 20 12:43 .pulse-cookie
+5636107   4 drwxr-xr-x  2 loud loud   4096 Feb 20 12:43 [01;34mTemplates[0m
+5636464 108 -rw-rw-r--  1 loud loud 110592 Feb 20 12:48 typescript
+5636112   4 drwxr-xr-x  2 loud loud   4096 Feb 20 12:43 [01;34mVideos[0m
+5636103   4 -rw-------  1 loud loud     51 Feb 20 12:43 .Xauthority
+5636104   4 -rw-------  1 loud loud   2208 Feb 20 12:44 .xsession-errors
+]0;loud@ubuntu: ~loud@ubuntu:~$ ^C
+]0;loud@ubuntu: ~loud@ubuntu:~$ exit
+exit
+
+Script done on Wed 20 Feb 2013 12:52:45 PM EST

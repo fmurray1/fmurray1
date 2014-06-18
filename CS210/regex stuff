@@ -1,0 +1,9 @@
+regular expressions
+
+. = wildcard
++ = some sort of input from 1- inf characters
+( ) means optional or capture depending on how used
+
+
+RE = select (.+) (where .+)  
+

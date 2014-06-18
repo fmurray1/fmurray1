@@ -1,0 +1,22 @@
+/* Checking Account Class */
+
+public class CheckingAccount extends Accounts
+{
+    public class CheckingAccount(String an, double bal)
+    {
+	super.addTransaction("Opened Account", bal, "Checking");
+	super.deposit(bal);
+    }
+    
+    public void deposit(double d)
+    {
+	super.addTransaction("Deposit", d, "Checking");
+	super.deposit(d);
+    }
+    
+    public void withdraw(double w)
+    {
+	super.addTransaction("Withdraw", w, "Checking");
+	super.withdraw(w);
+    }
+}

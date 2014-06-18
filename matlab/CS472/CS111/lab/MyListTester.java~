@@ -1,0 +1,24 @@
+/* My List Tester */
+
+public class MyListTester
+{
+    public static void main(String [] args)
+    {
+	private MyList<String> ml = new MyList<String>();
+	
+	System.out.println("Is the list empty? " +ml.empty());
+	
+	ml.add("World");
+	ml.add("Hello");
+	
+	ml.display();
+	
+	ml.remove();
+	
+	ml.display();
+	
+	ml.remove();
+	
+	System.out.println("Is the list empty? " +ml.empty);
+    }
+}

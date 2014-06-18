@@ -1,0 +1,84 @@
+1. select * from emp;
+
+
+
+
+
+to select all employeees hired after jan 01 1982
+
+select * from emp where hiredate > '1982-01-01';
+
+
+to only show the names
+
+select ename from emp where hiredate > '1982-01-01';
+
+joining tables
+
+for each row in table 2 it adds each of them to each row in table 1
+
+so if table 1 has 3 rows and table 2 has 2 rows
+
+the resulting joined table will have 6 rows
+
+
+
+this is the proper way to do it
+
+select ename, job, dname from emp join dept using(deptno);
+
+
+empno == mgr doesnt work
+
+
+
+
+
+
+
+
+2. select ename, sal from emp join dept using(deptno) where job = 'MANAGER';
+
+
+
+
+
+3. select ename, sal from emp order by sal desc;
+
+
+4. select ename, dname from emp join dept using(deptno);
+
+
+
+5. come back to
+
+
+6. select ename, sal from emp where sal >= 1500 and sal < 3000;
+
+
+7. select ename, job, sal from emp join dept using(deptno) where loc = 'NEW YORK';
+
+8. select ename, job, sal from emp join dept using(deptno) where loc = "CHICAGO' or sal < 2000;
+
+9. select ename, job, sal from emp join dept using(deptno) where loc = "CHICAGO' and sal < 2000; 
+
+10. select ename, job, sal from emp join dept using(deptno) where loc = "CHICAGO' and sal >= 2000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+--- Begin Adult.java ---
+1:	/* Adult Class */
+2:	
+3:	public class Adult extends Customer
+4:	{
+5:	    private double checkingInterest=.01, savingsInterest=.0075, checkCharge=.5, overdraftPenalty=35;
+6:	
+7:	    public Adult(String custNum, int a, String n, String ad, String t, int accntType, String acctNum, double bal)
+8:	    {
+9:		super(custNum, a, n, ad, t, accntType, acctNum, bal);
+10:	    }
+11:	    
+12:	    public double getCheckCharge()
+13:	    {
+14:		return checkCharge;
+15:	    }
+16:	    
+17:	    public double getCheckingInterest()
+18:	    {
+19:		return checkingInterest;
+20:	    }
+21:	    
+22:	    public double getOverdraftPenalty()
+23:	    {
+24:		return overdraftPenalty;
+25:	    }
+26:	
+27:	    public double getSavingsInterest()
+28:	    {
+29:		return savingsInterest;
+30:	    }
+
+Compilation Successful.
+
+--- End Adult.java ---
+
+

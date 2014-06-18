@@ -1,0 +1,20 @@
+--- Begin MissingOpperatorException.java ---
+1:	/* Missing Opperator Exception */
+2:	
+3:	public class MissingOpperatorException extends Exception
+4:	{
+5:	    public MissingOpperatorException()
+6:	    {
+7:		super();
+8:	    }
+9:	    
+10:	    public MissingOpperatorException(String s)
+11:	    {
+12:		super(s);
+13:	    }
+
+Compilation Successful.
+
+--- End MissingOpperatorException.java ---
+
+

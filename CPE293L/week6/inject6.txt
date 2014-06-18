@@ -1,0 +1,2 @@
+[Wed Feb 20 13:39:55 2013] [error] [client 127.0.0.1] client denied by server configuration: /var/www/denied/index.html
+

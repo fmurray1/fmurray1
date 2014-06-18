@@ -1,0 +1,68 @@
+--- Begin Accounts.java ---
+1:	/* Account class */
+2:	
+3:	public abstract class Accounts
+4:	{
+5:	    private Transactions [] transactions = new Transactions[10];
+6:	    private String accountNumber;
+7:	    private double balance = 0;
+8:	    private int numTrans;
+9:	
+10:	    public Accounts(String an, double bal)
+11:	    {
+12:		balance = bal;
+13:		accountNumber = an;
+14:	    }
+15:	
+16:	    public  void deposit(double d)
+17:	    {
+18:		balance += d;
+19:	    }
+20:	
+21:	    public void withdraw(Customer cust, double w)
+22:	    {
+23:		balance -= w;
+24:	    }
+25:	
+26:	    public void addTransaction(String an, String transactionType, double amount, String date)
+27:	    {
+28:		transactions[numTrans]= new Transactions(an, transactionType, amount, date);
+29:		numTrans++;
+30:	    }
+31:	    
+32:	    public void displayTrans()
+33:	    {
+34:		for(int i = 0; i < numTrans; i++)
+35:		    {
+36:			System.out.println(transactions[i]);
+37:		    }
+38:	    }
+39:	    
+40:	    public String getAccountNumber()
+41:	    {
+42:		return accountNumber;
+43:	    }
+44:	    
+45:	    public double getBalance()
+46:	    {
+47:		return balance;
+48:	    }
+49:	
+50:	    public String toString()
+51:	    {
+52:		String as;
+53:		
+54:		as = "Account: " +accountNumber +"\n";
+55:		as+= "Balance: " +balance +"\n";
+56:		as += "Number of past transactions :" +numTrans;
+57:		
+58:		return as;
+59:	    }
+60:	}
+61:	
+
+Compilation Successful.
+
+--- End Accounts.java ---
+
+

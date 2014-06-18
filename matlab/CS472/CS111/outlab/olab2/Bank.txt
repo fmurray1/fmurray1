@@ -1,0 +1,197 @@
+--- Begin Bank.java ---
+1:	/* The Bank class */
+2:	
+3:	import java.util.*;
+4:	
+5:	public class Bank
+6:	{
+7:	    private Customer [] customers = new Customer [10];
+8:	    private int numCusts = 0;
+9:	    
+10:	    //Constructor
+11:	    /** Default Constructor for Bank <br>
+12:	     *  Pre-Conditions none <br>
+13:	     *  Post-Coditions A bank is created witn an array of customers */
+14:		
+15:	    public Bank()
+16:	    {}
+17:	    
+18:	
+19:	    /** initializes a new account for a new customer <br>
+20:	     *  Pre-Conditions: none <br>
+21:	     *  Post-Conditions: A new Customer is created with the users inputs to the questions, and a new account for that Customer is created <br>
+22:	     * responses: InputMissMatchException */ 
+23:	    
+24:	    public void addAccount()
+25:	    {
+26:		Scanner sc = new Scanner(System.in);
+27:		int t, a, acctType;
+28:		boolean correct= false;
+29:		String cn, n, ad, tel, an;
+30:		double bal;
+31:		cn = ""+ numCusts;
+32:		while(!correct)
+33:		    {
+34:			System.out.println("What type of customer are you?\n1.)Student\n2.)Adult\n3.)Senior");
+35:			t = sc.nextInt();
+36:			sc.nextLine();
+37:			switch(t)
+38:			    {
+39:			    case 1:
+40:				System.out.println("Please enter your Name:");
+41:				n = sc.nextLine();
+42:				System.out.println("Plese enter you age:");
+43:				a = sc.nextInt();
+44:				sc.nextLine();
+45:				System.out.println("Please enter your telephone Number:");
+46:				tel = sc.nextLine();
+47:				System.out.println("Please enter your address (on one line);");
+48:				ad = sc.nextLine();
+49:				System.out.println("What type of account are you opening:\n1) Checking\n2) Savings");
+50:				acctType = sc.nextInt();
+51:				sc.nextLine();
+52:				System.out.println("How much money are you opening your account with: ");
+53:				bal = sc.nextDouble();
+54:				sc.nextLine();
+55:				customers[numCusts]= new Student(cn, a, n, ad, tel, acctType, "0", bal);
+56:				numCusts++;
+57:				correct = true;
+58:				break;
+59:			    case 2:
+60:				System.out.println("Please enter your Name:");
+61:				n = sc.nextLine();
+62:				System.out.println("Please enter your age:");
+63:				a = sc.nextInt();
+64:				sc.nextLine();
+65:				System.out.println("Please enter your telephone Number");
+66:				tel = sc.nextLine();
+67:				System.out.println("Please enter your address (on one line):");
+68:				ad = sc.nextLine();
+69:				System.out.println("What type of account are you opening:\n1) Checking\n2) Savings");
+70:				acctType = sc.nextInt();
+71:				sc.nextLine();
+72:				System.out.println("How much money are you opening your account with:");
+73:				bal = sc.nextDouble();
+74:				sc.nextLine();
+75:				customers[numCusts] = new Adult(cn, a, n, ad, tel, acctType, "0", bal);
+76:				numCusts++;
+77:				correct = true;
+78:				break;
+79:			    case 3:
+80:				System.out.println("Please enter your name: ");
+81:				n = sc.nextLine();
+82:				System.out.println("Please enter your age: ");
+83:				a = sc.nextInt();
+84:				sc.nextLine();
+85:				System.out.println("Please enter your telephone number: ");
+86:				tel = sc.nextLine();
+87:				System.out.println("Please enter your address (on one line)");
+88:				ad = sc.nextLine();
+89:				System.out.println("What type of account are you opening:\n1) Checking\n2) Savings");
+90:				acctType = sc.nextInt();
+91:				sc.nextLine();
+92:				System.out.println("How much money are you opening your account with: ");
+93:				bal = sc.nextDouble();
+94:				sc.nextLine();
+95:				customers[numCusts] = new Senior(cn, a, n, ad, tel, acctType, "0", bal);
+96:				numCusts++;
+97:				correct = true;
+98:				break;
+99:			    default:
+100:				System.out.println("Incorrect number! Please try again.");
+101:				sc.nextLine();
+102:				correct = false;
+103:			    }
+104:			sc.nextLine();
+105:			sc.close();
+106:		    }
+107:	    }
+108:	
+109:	    /** initializes a new account for an existing customer
+110:	     *  Pre-Conditions: CustomerNumber is a valid String of Numbers <br>
+111:	     *  Post-Conditions: A new account is created for an existing customer <br>
+112:	     *  responses: Exception and Error Terminate
+113:	     *  @param custNum = String of valid customer number */
+114:	     
+115:	    public void  addAccount(String custNum)
+116:	    {
+117:		Scanner sc = new Scanner(System.in);
+118:		for(int i = 0; i <numCusts; i++)
+119:		    {
+120:			if(customers[i].getCustomerNumber().equals(custNum))
+121:			    {
+122:				int an, at;
+123:				String ans;
+124:				double b;
+125:				an = customers[i].numOfAccounts() +1;
+126:				ans = "" + an;
+127:				System.out.println("What type of account would you like to open:\n1) Checking\n2) Savings");
+128:				at = sc.nextInt();
+129:				System.out.println("How much money are you opening the account with: ");
+130:				b = sc.nextDouble();
+131:				customers[i].addAccount(at, ans, b);
+132:			    }
+133:		    }
+134:	    }
+135:	    
+136:	
+137:	    /** Allows money to be withdrawn from an account
+138:	     *  Pre-Conditions: acctNum, custNum, date are valid Strings, w is a valid double <br>
+139:	     *  Post-Conditions: w is subtracted from the Customers specified account <br>
+140:	     *  @param acctNum = valid String that matches account number
+141:	     *  @param custNum = valid string that matches customer number
+142:	     *  @param w = double
+143:	     *  @param date = String */ 
+144:	    public void makeWithdrawl(String acctNum, String custNum, double w, String date)
+145:	    {
+146:		for(int j = 0; j< numCusts; j++)
+147:		    {
+148:			if(customers[j].getCustomerNumber().equals(custNum))
+149:			    {
+150:				customers[j].getAccount(acctNum).withdraw(customers[j],w);
+151:			    }
+152:		    }
+153:	    }
+154:	    /** Allows money to be deposited into an account
+155:	     *  Pre-Conditions: acctNum, custNum, date are valid Strings, d is a valid double <br>
+156:	     *  Post-Conditions: d is added to the specified account for that customer <br>
+157:	     *  @param acctNum = valid String that matches account number
+158:	     *  @param custNum = valid String that matches customer number
+159:	     *  @param w= double
+160:	     *  @param date = String */
+161:	    public void makeDeposit(String acctNum, String custNum, double d, String date)
+162:	    {
+163:		for(int k = 0; k<numCusts; k++)
+164:		    {
+165:			if(customers[k].getCustomerNumber().equals(custNum))
+166:			    {
+167:				customers[k].getAccount(acctNum).deposit(d);
+168:			    }
+169:		    }
+170:	    }
+171:	
+172:	    /** Returns a specific account for a specific Customer
+173:	     *  Pre-Conditions: acctNum, custNum are valid Strings <br>
+174:	     *  Post-Conditions: returns the Account specified <br>
+175:	     *  response: return null
+176:	     *  @param custNum = valid String that matches customer number
+177:	     *  @param acctnum = valid String that matches account number
+178:	     */
+179:	    public Accounts getAccount(String actNum, String custNum)
+180:	    {
+181:		for(int l = 0; l<numCusts; l++)
+182:		    {
+183:			if(customers[l].getCustomerNumber().equals(custNum))
+184:			    {
+185:				customers[l].getAccount(actNum);
+186:			    }
+187:		    }
+188:		return null;
+189:	    }	
+190:	}
+
+Compilation Successful.
+
+--- End Bank.java ---
+
+
