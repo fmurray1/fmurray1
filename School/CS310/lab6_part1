@@ -1,0 +1,26 @@
+# 1b2
+
+(define two 
+	(lambda (x)
+		(if (equal x 2) 
+			true 
+			false))))
+
+# 1b3
+
+(define addon 
+	(???
+		
+
+
+
+#1b4
+
+(define last
+	(if (equal? cdr nil)
+		car
+	last(cdr)))
+
+#1b5
+
+

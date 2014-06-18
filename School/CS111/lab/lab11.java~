@@ -1,0 +1,78 @@
+/* Francis Murray CS111 Lab 11 Friday March 23rd 2012 */
+
+import java.util.*;
+
+public class lab11{
+
+    public static Queue <Person> list = new LinkedList<Person>();
+    
+    public static void main (String [] args)
+    {
+	Scanner sc = new Scanner(System.in);
+	int a = 0;
+
+	//menu
+	
+	System.out.println("Would you like to:\n1.) Create a person\n2.) Display Queue\n3.) Remove the first person from the queue and display that person\n4.) Display the next person");
+	a = sc.nextInt();
+	sc.nextLine();
+	
+	switch(a)
+	    {
+	    case 1:
+		god();
+		break;
+	    case 2:
+		display(list);
+		break;
+	    case 3:
+		remove();
+		break;
+	    case 4:
+		show();
+		break;
+	    default:
+		System.out.println("Incorrect selection");
+		break;
+	    }
+
+    }
+
+    public static void god()
+    {
+	String f,l;
+	int age;
+	Scanner sc2= new Scanner(System.in);
+	
+	System.out.println("Please enter the persons first name:");
+	f = sc2.nextLine();
+	System.out.println("Please enter the persons last name:");
+	l = sc2.nextLine();
+	System.out.println("Please enter the persons age:");
+	age = sc2.nextInt();
+	sc2.nextLine();
+	sc2.close();
+
+	list.add(new Person(f,l,age));
+    }
+
+    public static void display(Queue<Person> l)
+    {
+	do
+	    {
+		System.out.println(l.remove());
+	    }
+	while(!l.isEmpty());
+    }
+
+    public static void remove()
+    {
+	System.out.println(list.remove());
+    }
+
+    public static void show()
+    {
+	System.out.println(list.element());
+    }
+}
+	    

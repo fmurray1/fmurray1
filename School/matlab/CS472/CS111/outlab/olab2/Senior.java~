@@ -1,0 +1,40 @@
+/* Senior Class */
+
+public class Senior extends Customer
+{
+    String customerNumber, name, address, telephoneNumber, accountNumber;
+    int age, accountType;
+    double balance, checkCharge, CheckingInterest, overdraftPenalty, savingsInterest;
+    
+    public class Senior(String cn, int a, String n, String ad, String t, int acct, String an, double bal)
+    {
+	customerNumber = cn;
+	age = a;
+	name = n;
+	address = ad;
+	telephoneNumber = t; 
+	accountType = acct;
+	accountNumber = an;
+	balance = bal;
+    }
+
+    public double getCheckCharge()
+    {
+	return checkCharge;
+    }
+    
+    public double getCheckingInterest()
+    {
+	return checkingInterest;
+    }
+    
+    public double getOverdraftPenalty()
+    {
+	return overdraftPenalty;
+    }
+    
+    public double getSavingsInterest()
+    {
+	return savingsInterest;
+    }
+}

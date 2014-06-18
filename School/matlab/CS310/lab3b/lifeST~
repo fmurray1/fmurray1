@@ -1,0 +1,68 @@
+#Life Stage Text
+
+Birth
+You have entered the world. What will you do?
+>Home Go home with a family.
+>Cats Flee the hospital to live with cats.
+
+Home
+You have chosen to go live with your family! What to do next?
+>Job Get a job
+>School Go to school
+>Woods Go live in the woods
+
+Cats
+You crawl into an alley behind the hospital, filled with cats. They embrace you as their own. What to do next?
+>School Go to school
+>Woods Go live in the woods
+>President Become cat president
+
+Job
+You decide to go get a minimum-wage job. Now what?
+>Family Start a family
+>BetterJob Work toward a better job
+
+School
+You have chosen to go to school. You thoroughly enjoy spending the best years of your life studying. Now what?
+>Family Start a family
+>Job Get a hot new job
+
+Woods
+You take a page from Thoreau and go live in the woods. Now what?
+>Terror Terrorize children at summer camp
+>Acorn Become an acorn peddlar
+
+President
+After a long campaign of handing out catnip and petting kittens, you have been elected the president of cats! Now what?
+>Family Become somewhat normal and start a family
+>Retire Retire to Cat-topia
+
+Family
+You meet someone, and create little someones. And now?
+>Die And...
+
+BetterJob
+You have taken an exciting job at Technology Man Co. What do you do now?
+>Insanity Slip into insanity
+>Millionare Handle your money reasonably
+
+Terror
+After the Summer Camp for Excitable Teens is built near your cabin--and after finding a rather menacing pickaxe--you decide to dress up as an evil dwarf and terrorize summer camp goers. And now?
+>Die And...
+
+Acorn
+Unfortunately, you are the only human in the woods, and squirrels are fairly good at finding acorns on their own. And now?
+>Die: And...
+
+Retire
+You have decided to retire to Cat-topia. Cat food is shaped into your image, and birds are sacrificed to you daily. And now?
+>Die And...
+
+Millionare
+You have become a deranged millionare. Your days are spent in tribal garb, and working on your "Moustaches of the Apocalypse" diorama. And now?
+>Die And...
+
+Die
+Congratulations, you are dead!
+
+

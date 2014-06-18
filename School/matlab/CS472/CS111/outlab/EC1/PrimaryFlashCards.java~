@@ -1,0 +1,30 @@
+/* This is the modified problem generator for k-12 */
+
+public class PrimaryFlashCards extends Problem
+{
+    private Problem p; 
+
+
+    p= new problem();
+
+
+    
+	if(p.left > 0 && p.left < 100 && p.right > 0 && p.right < 100)
+	    {
+		if(p.operator == / && (p.left % p.right) == 0)
+		    {
+			correctAnswer = (p.left / p.right);
+		    }
+		else if((p.left - p.right)>0)
+		    {
+			correctAnswer = (p.left - p.right);
+		    }
+		else if((p.left + p.right)>=0)
+		    {
+			correctAnswer = (p.left + p.right);
+		    }
+		else
+		    {
+			// new problem generated
+		    }
+	    }

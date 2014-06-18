@@ -1,0 +1,28 @@
+--- Begin SavingsAccount.java ---
+1:	/* Savings Account Class */
+2:	
+3:	public class SavingsAccount extends Accounts
+4:	{
+5:	    public SavingsAccount(String an, double bal)
+6:	    {
+7:		super(an, bal);
+8:		super.addTransaction(an, "Opened Account", bal, "Date");
+9:	    }
+10:	
+11:	    public void deposit(double d)
+12:	    {
+13:		super.addTransaction(super.getAccountNumber(),"Deposit", d, "Date");
+14:		super.deposit(d);
+15:	    }
+16:	    
+17:	    public void withdraw(Customer cust, double w)
+18:	    {
+19:		super.addTransaction(super.getAccountNumber(),"Withdraw", w, "Savings");
+20:		super.withdraw(cust, w);
+21:	    }
+
+Compilation Successful.
+
+--- End SavingsAccount.java ---
+
+

@@ -1,0 +1,24 @@
+/* Francis Murray CS111 Lab 9 Friday March 9th 2012 */
+
+public class lab9
+{
+    public static void main(String [] args)
+    {
+	private Person per [] = new Person [4];
+	
+	per[1]= new Adult("John", "Doe", 25, "None");
+	per[2]= new Student("Francis", "Murray", 20, 3.0, 13);
+	per[3]= new CollegeStudent("Corey", "Hinkle", 23, 4.0, 15, "WVU", per[1]);
+	per[4]= new Adult("Blah", "Blah", 100, "Retired");
+	
+	System.out.println(per[1].compareTo(per[2]);
+
+	//Sort(per);
+	
+	//print(per);
+
+	
+	
+    }
+
+    

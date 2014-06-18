@@ -1,0 +1,20 @@
+1. select * from emp;
+
+2. select ename, sal from emp join dept using(deptno) where job = 'MANAGER';
+
+3. select ename, sal from emp order by sal desc;
+
+4. select ename, dname from emp join dept using(deptno);
+
+5.  select sname, pname, qty from sp join s using(snum) join p using(pnum) order by sname order by pname;
+
+6. select ename, sal from emp where sal >= 1500 and sal < 3000;
+
+7. select ename, job, sal from emp join dept using(deptno) where loc = 'NEW YORK';
+
+8. select ename, job, sal from emp join dept using(deptno) where loc = "CHICAGO' or sal < 2000;
+
+9. select ename, job, sal from emp join dept using(deptno) where loc = "CHICAGO' and sal < 2000; 
+
+10. select ename, job, sal from emp join dept using(deptno) where loc = "CHICAGO' and sal >= 2000;
+

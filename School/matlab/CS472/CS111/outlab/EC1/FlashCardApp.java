@@ -1,0 +1,48 @@
+/* This is the application to use the flash cards */
+
+import java.util.*;
+
+public class FlashCardApp
+{
+    public static void main(String [] args) throws InputMismatchException
+    {
+	Scanner sc = new Scanner(System.in);
+	int sel;
+	boolean input = false;
+	while(!input)
+	    {
+		try
+		    {
+			System.out.println("Select the dificulty of the flash cards:");
+			System.out.println("1.) Grades k-2");
+			System.out.println("2.) Grades 3-6");
+			System.out.println("3.) College Level");
+			
+			sel = sc.nextInt();
+			
+			switch(sel)
+			    {
+			    case 1:
+				new PrimaryFlashCards();
+				input = true;
+				break;
+			    case 2:
+				new ElementaryFlashCards();
+				input = true;
+				break;
+			    case 3:
+				new CollegeFlashCards();
+				input = true;
+				break;
+			    }
+		    }
+		catch(InputMismatchException e)
+		    {
+			sc.nextLine();
+			System.out.println("You must enter the number of the selection you want");
+			input = false;
+		    }
+	    }
+    }
+}
+	
